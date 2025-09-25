@@ -70,7 +70,7 @@
 #projetos .container-cards .card {
   cursor: pointer;
   flex: 0 0 auto;
-  width: clamp(150px, 25vw, 250px);
+  width: clamp(200px, 25vw, 250px);
   padding: 1rem;
   border-radius: 15px;
   text-align: center;
@@ -197,9 +197,12 @@
   width: 100%;
   display: grid;
   padding: 1rem;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, 1fr);
   gap: 20px;
   border-radius: 20px;
+}
+#galeria .container > :first-child {
+  grid-column: 1/-1;
 }
 #galeria .container img {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
