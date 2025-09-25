@@ -1,12 +1,14 @@
 export function Modal(triggerId, modalHTML) {
   const trigger = document.getElementById(triggerId);
+  const body = document.querySelector('body')
+  
+
 
   if (!trigger) return; // protege caso não ache o ID
 
   trigger.addEventListener("click", () => {
     // fecha outros modais abertos
     document.querySelectorAll('.modal-overlay').forEach(o => o.remove());
-
     // Criar overlay
     const overlay = document.createElement("div");
     overlay.classList.add("modal-overlay");
@@ -19,15 +21,21 @@ export function Modal(triggerId, modalHTML) {
       ${modalHTML}
     `;
 
+    body.classList.add('no-scroll')
+
     overlay.appendChild(container);
     document.body.appendChild(overlay);
 
     // Fechar ao clicar no X ou fora do modal
     container.querySelector(".modal-close").addEventListener("click", () => {
-      overlay.remove();
+        overlay.remove();
+        body.classList.remove("no-scroll");
     });
     overlay.addEventListener("click", (e) => {
-      if (e.target === overlay) overlay.remove();
+      if (e.target === overlay){
+        overlay.remove();
+        body.classList.remove("no-scroll");
+      } 
     });
   });
 }
