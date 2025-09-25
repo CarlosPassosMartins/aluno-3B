@@ -1,0 +1,99 @@
+/* Overlay escuro atrás do modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  animation: blurUp .3s forwards; 
+  -webkit-animation: blurUp .3s forwards;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+/* Container principal do modal */
+.modal-container {
+  position: relative;
+  background: var(--c-w);
+  width: 85vw;
+  max-width: 700px;
+  height: 80vh;
+  border-radius: 12px;
+  padding: 20px;
+  overflow-y: auto; // cria rolagem se passar da altura
+
+  // Scrollbar (Chrome, Edge, Safari)
+  &::-webkit-scrollbar {
+    width: 14px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: var(--c-w);
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+    border: 3px solid var(--c-w); // cria "folga" para destacar
+
+    &:hover {
+      background: #555;
+    }
+  }
+
+  // Firefox
+  scrollbar-width: thick;
+  scrollbar-color: #888 var(--c-w);
+
+  // Classes internas
+  .title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    margin-left: 2rem;
+    width: 100%;
+  }
+
+  .image {
+    width: 100%;
+    display: block;
+    margin: 1rem 0;
+    img{
+        border-radius: 10px;
+        width: 100%;
+        aspect-ratio: 2 / 1;
+        height: auto;
+    }
+  }
+
+  .paragrafo {
+    width: 100%;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+}
+
+/* Botão de fechar */
+.modal-close {
+  position: sticky;
+  top: 10px;
+  left: calc(85vw - 25px);
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+@keyframes blurUp {
+  from {
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+  }
+  to {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+}
