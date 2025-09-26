@@ -217,9 +217,15 @@
   box-shadow: 0 0 12px black;
   transform: scale(1.05);
 }
-@media screen and (min-width: 1024px) {
+@media (min-width: 768px) {
   #galeria .container {
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 2rem 1.5rem;
+  }
+}
+@media (min-width: 1024px) {
+  #galeria .container {
+    grid-template-columns: repeat(4, 1fr);
     padding: 2rem 1.5rem;
   }
 }
